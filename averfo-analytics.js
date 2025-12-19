@@ -13,8 +13,11 @@
     }
 
     if (navigator.sendBeacon) {
+      console.log('Using sendBeacon for event:', name)
       navigator.sendBeacon(endpoint, JSON.stringify(payload))
     } else {
+      console.log('Using fetch for event:', name)
+
       fetch(endpoint, {
         method: 'POST',
         headers: {
