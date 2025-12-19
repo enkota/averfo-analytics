@@ -26,4 +26,11 @@
 
   sendEvent('pageview')
   window.addEventListener('load', () => sendEvent('page.load'))
+
+  window.addEventListener('popstate', () => sendEvent('pageview'))
+  const pushState = history.pushState
+  history.pushState = function () {
+    pushState.apply(this, arguments)
+    sendEvent('pageview')
+  }
 })()
