@@ -25,13 +25,11 @@
     }
   }
 
-  // 👇 single global entry point
   window.averfo = window.averfo || {}
   window.averfo.track = track
 
   track('pageview')
 
-  window.addEventListener('load', () => track('page.load'))
   window.addEventListener('popstate', () => track('pageview'))
 
   const pushState = history.pushState
